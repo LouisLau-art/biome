@@ -145,7 +145,6 @@ use crate::runner::handler::Handler;
 use crate::runner::process_file::{ProcessFile, ProcessStdinFilePayload};
 use crate::runner::scan_kind::derive_best_scan_kind;
 use crate::{CliDiagnostic, CliSession, setup_cli_subscriber};
-use biome_analyze::profiling;
 use biome_configuration::Configuration;
 use biome_console::{Console, ConsoleExt, markup};
 use biome_diagnostics::PrintDiagnostic;
@@ -257,10 +256,6 @@ pub(crate) trait CommandRunner {
     ) -> Result<(), CliDiagnostic> {
         self.setup_logging(log_options, cli_options);
         self.check_incompatible_arguments()?;
-
-        if cli_options.profile {
-            profiling::enable();
-        }
 
         let console = &mut *session.app.console;
         let workspace = &*session.app.workspace;
