@@ -102,8 +102,7 @@ where
             return;
         }
 
-        let rule_timer =
-            profiling::start_plugin_rule(ctx.options.file_path.file_name().unwrap_or("plugin"));
+        let rule_timer = profiling::start_plugin_rule("plugin");
         let diagnostics = self
             .plugin
             .evaluate(node.clone().into(), ctx.options.file_path.clone());

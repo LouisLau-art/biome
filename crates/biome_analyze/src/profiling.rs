@@ -470,7 +470,7 @@ impl biome_console::fmt::Display for DisplayProfiles {
             .fmt(f)?;
         }
 
-        write!(f, "test")
+        Ok(())
     }
 }
 
